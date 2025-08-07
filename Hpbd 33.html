@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc mừng sinh nhật!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(to top, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .message {
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 3em;
+      font-weight: bold;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    .sub-message {
+      position: absolute;
+      top: 35%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 1.8em;
+      font-style: italic;
+      padding: 0 20px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff5e78, 0 0 20px #ff5e78, 0 0 30px #ff5e78;
+      }
+      to {
+        text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493, 0 0 40px #ff1493;
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff9a9e, #fad0c4);
+      border-radius: 50% 50% 45% 45%;
+      animation: float 8s linear infinite;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) translateX(-30px);
+        opacity: 0;
+      }
+    }
+
+    .cake {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 130px;
+      background: #fff0f5;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    .cake::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: pink;
+      border-radius: 10px 10px 0 0;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateY(-10px);
+      }
+    }
+
+    /* Nến sinh nhật với số 21 */
+    .candle {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+    }
+
+    .number {
+      font-size: 20px;
+      font-weight: bold;
+      color: orange;
+      background: #fffacd;
+      padding: 2px 6px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px yellow;
+    }
+
+    /* Trái tim trang trí */
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(-45deg);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 7.5px;
+      top: 0;
+    }
+
+    /* Vị trí trái tim */
+    .heart1 { top: 20px; left: 15px; }
+    .heart2 { top: 20px; right: 15px; }
+    .heart3 { top: 60px; left: 40px; }
+
+    /* Kẹo tròn */
+    .candy {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff69b4;
+      border-radius: 50%;
+      box-shadow: 0 0 5px white;
+    }
+
+    .candy1 { top: 90px; left: 10px; }
+    .candy2 { top: 100px; right: 15px; }
+    .candy3 { top: 80px; left: 90px; }
+  </style>
+</head>
+<body>
+
+  <div class="message">🎂 Happy Birthday em, Phương Ngân Như 🎉</div>
+  <div class="sub-message">
+    Chúc em tuổi mới thật nhiều niềm vui, hạnh phúc, luôn cười thật tươi, đạt được nhiều mục tiêu mà em mong muốn. Anh mong thời gian sắp tới sẽ có cơ hội để biết nhiều hơn về em, và theo đuổi thành công được em trong tương lai.<br>
+    Anh chúc em luôn tỏa sáng như ánh nến trên chiếc bánh này! luv u 💖
+  </div>
+
+  <!-- Bánh kem -->
+  <div class="cake">
+    <!-- Nến số 21 -->
+    <div class="candle">
+      <div class="number">2</div>
+      <div class="number">1</div>
+    </div>
+
+    <!-- Trái tim -->
+    <div class="heart heart1"></div>
+    <div class="heart heart2"></div>
+    <div class="heart heart3"></div>
+
+    <!-- Kẹo -->
+    <div class="candy candy1"></div>
+    <div class="candy candy2"></div>
+    <div class="candy candy3"></div>
+  </div>
+
+  <script>
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random() * window.innerWidth + 'px';
+      balloon.style.animationDuration = (6 + Math.random() * 4) + 's';
+      document.body.appendChild(balloon);
+
+      setTimeout(() => {
+        balloon.remove();
+      }, 10000);
+    }
+
+    setInterval(createBalloon, 500);
+  </script>
+
+</body>
+</html>
